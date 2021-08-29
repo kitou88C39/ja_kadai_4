@@ -61,15 +61,11 @@
     try {
       const respnse = await fetch(API_URL);
       quizData = await respnse.json();
+      const quizInstance = new Quiz(quizData);
+      setNextQuiz(quizInstance, index);
     } catch (error) {
       console.log(error);
     }
-
-    const response = await fetch(API_URL);
-    const quizData = await response.json();
-    const quizInstance = new Quiz(quizData);
-
-    setNextQuiz(quizInstance, index);
   };
   const setNextQuiz = (quizInstance, index) => {
     while (answersContainer.firstChild) {
